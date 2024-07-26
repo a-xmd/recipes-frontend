@@ -39,6 +39,7 @@ export const Login = () => {
   const [password, setPassword] = useState("randomrandomrandom");
 
   // @todo: add typing
+  // @ts-expect-error tmp
   const { login } = useOutletContext();
   const [searchie] = useSearchParams();
   console.log(">>", searchie.get("origin"));
