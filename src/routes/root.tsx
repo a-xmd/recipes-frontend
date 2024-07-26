@@ -21,7 +21,10 @@ export const Root = () => {
     });
     console.log("en hier", req.url);
     const meRes = await fetch(createApiUrl("/api/me"));
-    console.log("en hier", meRes.url);
+    if (meRes.status !== 200) {
+      console.log("😱 whoops");
+      return;
+    }
     setUser(await meRes.json());
   }, []);
 
