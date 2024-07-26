@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useRouteError } from "react-router-dom";
 
 import type { UserContext, User } from "@/types/user.ts";
 import { Header } from "@/components/header/header.tsx";
@@ -28,7 +28,9 @@ export const Root = () => {
     });
     setUser(null);
   }, []);
-
+  const error = useRouteError();
+  // @todo: delete
+  console.log({ error });
   return (
     <div className="m-8">
       <Header logout={logout} username={user?.username} />

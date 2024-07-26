@@ -13,12 +13,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: async () => {
+      JSON.parse("z");
       const res = await fetch("/api/me");
       if (res.status !== 200) {
         return null;
       }
       return await res.json();
     },
+    errorElement: <div>error</div>,
     children: [
       {
         path: "/",
