@@ -18,6 +18,7 @@ export const Root = () => {
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include",
     });
     console.log("en hier", req.url);
     const meRes = await fetch(createApiUrl("/api/me"));
