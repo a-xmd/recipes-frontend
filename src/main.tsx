@@ -20,7 +20,6 @@ const router = createBrowserRouter([
       }
       return await res.json();
     },
-    errorElement: <div>error</div>,
     children: [
       {
         path: "/",
