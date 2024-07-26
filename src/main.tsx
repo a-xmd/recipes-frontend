@@ -7,17 +7,19 @@ import { Home } from "@/views/home.tsx";
 import { About } from "@/views/about.tsx";
 import { Login } from "@/views/login.tsx";
 import { ProtectedRoutes } from "@/routes/protected-routes.tsx";
+import { createApiUrl } from "@/utils/url.ts";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     loader: async () => {
-      const res = await fetch("/api/me");
+      const res = await fetch(createApiUrl("/api/me"));
+      console.log("req url", res.url);
       if (res.status !== 200) {
         return null;
       }
-      console.log("req url", res.url);
+
       return await res.json();
     },
     children: [
