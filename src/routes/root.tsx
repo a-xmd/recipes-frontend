@@ -19,6 +19,7 @@ export const Root = () => {
       },
     });
     const meRes = await fetch("/api/me");
+    console.log("en hier", meRes.url);
     setUser(await meRes.json());
   }, []);
 

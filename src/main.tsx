@@ -17,6 +17,7 @@ const router = createBrowserRouter([
       if (res.status !== 200) {
         return null;
       }
+      console.log("req url", res.url);
       return await res.json();
     },
     children: [
