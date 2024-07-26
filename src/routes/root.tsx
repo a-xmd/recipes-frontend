@@ -20,13 +20,13 @@ export const Root = () => {
       },
     });
     console.log("en hier", req.url);
-    const meRes = await fetch("/api/me");
+    const meRes = await fetch(createApiUrl("/api/me"));
     console.log("en hier", meRes.url);
     setUser(await meRes.json());
   }, []);
 
   const logout = useCallback(async () => {
-    await fetch("/api/auth/logout", {
+    await fetch(createApiUrl("/api/auth/logout"), {
       method: "POST",
     });
     setUser(null);
