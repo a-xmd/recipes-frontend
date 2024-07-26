@@ -3,6 +3,7 @@ import { Outlet, useLoaderData, useRouteError } from "react-router-dom";
 
 import type { UserContext, User } from "@/types/user.ts";
 import { Header } from "@/components/header/header.tsx";
+import { createApiUrl } from "@/utils/url.ts";
 
 export const Root = () => {
   // @todo: improve typing
@@ -11,13 +12,14 @@ export const Root = () => {
   const [user, setUser] = useState(initialUser);
 
   const login = useCallback(async (email: string, password: string) => {
-    await fetch("/api/auth/login", {
+    const req = await fetch(createApiUrl("/api/auth/login"), {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
         "content-type": "application/json",
       },
     });
+    console.log("en hier", req.url);
     const meRes = await fetch("/api/me");
     console.log("en hier", meRes.url);
     setUser(await meRes.json());
