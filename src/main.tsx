@@ -13,7 +13,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: async () => {
-      JSON.parse("z");
       const res = await fetch("/api/me");
       if (res.status !== 200) {
         return null;
