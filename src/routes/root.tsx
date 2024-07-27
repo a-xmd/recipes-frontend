@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Outlet, useLoaderData, useRouteError } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 
 import type { UserContext, User } from "@/types/user.ts";
 import { Header } from "@/components/header/header.tsx";
@@ -12,7 +12,7 @@ export const Root = () => {
   const [user, setUser] = useState(initialUser);
 
   const login = useCallback(async (email: string, password: string) => {
-    const req = await fetch(createApiUrl("/api/auth/login"), {
+    await fetch(createApiUrl("/api/auth/login"), {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -20,7 +20,7 @@ export const Root = () => {
       },
       credentials: "include",
     });
-    console.log("en hier", req.url);
+
     const meRes = await fetch(createApiUrl("/api/me"));
     if (meRes.status !== 200) {
       console.log("😱 whoops");
@@ -35,9 +35,7 @@ export const Root = () => {
     });
     setUser(null);
   }, []);
-  const error = useRouteError();
-  // @todo: delete
-  console.log({ error });
+
   return (
     <div className="m-8">
       <Header logout={logout} username={user?.username} />
