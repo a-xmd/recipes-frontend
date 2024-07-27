@@ -14,7 +14,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: async () => {
-      const res = await fetch(createApiUrl("/api/me"));
+      const res = await fetch(createApiUrl("/api/me"), {
+        credentials: "include",
+      });
       console.log("req url", res.url);
       if (res.status !== 200) {
         return null;
