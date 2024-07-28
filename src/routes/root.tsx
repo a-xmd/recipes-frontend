@@ -21,7 +21,9 @@ export const Root = () => {
       credentials: "include",
     });
 
-    const meRes = await fetch(createApiUrl("/api/me"));
+    const meRes = await fetch(createApiUrl("/api/me"), {
+      credentials: "include",
+    });
     if (meRes.status !== 200) {
       console.log("😱 whoops");
       return;
@@ -32,6 +34,7 @@ export const Root = () => {
   const logout = useCallback(async () => {
     await fetch(createApiUrl("/api/auth/logout"), {
       method: "POST",
+      credentials: "include",
     });
     setUser(null);
   }, []);
