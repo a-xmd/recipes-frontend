@@ -6,7 +6,9 @@ export const Home = () => {
       <div>view for home</div>
       <button
         onClick={async () => {
-          const res = await fetch(createApiUrl("/api/views"));
+          const res = await fetch(createApiUrl("/api/views"), {
+            credentials: "include",
+          });
           console.log(await res.json());
         }}
       >
