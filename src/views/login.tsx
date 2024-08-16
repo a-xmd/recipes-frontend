@@ -35,8 +35,8 @@ const Input = ({
 };
 
 export const Login = () => {
-  const [email, setEmail] = useState("ahmed.n.abbas@gmail.com");
-  const [password, setPassword] = useState("randomrandomrandom");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // @todo: add typing
   // @ts-expect-error tmp
