@@ -1,16 +1,16 @@
-import { type ChangeEventHandler, useState } from "react";
+import { type ChangeEventHandler, useState } from 'react'
 import {
   useNavigate,
   useOutletContext,
   useSearchParams,
-} from "react-router-dom";
+} from 'react-router-dom'
 
 interface InputProps {
-  label: string;
-  value: string;
-  handleChange: ChangeEventHandler<HTMLInputElement>;
-  type?: "text" | "password";
-  placeholder?: string;
+  label: string
+  value: string
+  handleChange: ChangeEventHandler<HTMLInputElement>
+  type?: 'text' | 'password'
+  placeholder?: string
 }
 
 const Input = ({
@@ -18,7 +18,7 @@ const Input = ({
   label,
   value,
   handleChange,
-  type = "text",
+  type = 'text',
 }: InputProps) => {
   return (
     <label className="flex flex-col gap-2">
@@ -31,21 +31,21 @@ const Input = ({
         onChange={handleChange}
       />
     </label>
-  );
-};
+  )
+}
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   // @todo: add typing
   // @ts-expect-error tmp
-  const { login } = useOutletContext();
-  const [searchie] = useSearchParams();
-  console.log(">>", searchie.get("origin"));
-  console.log({ searchie });
-  console.log({ login });
-  const navigate = useNavigate();
+  const { login } = useOutletContext()
+  const [searchie] = useSearchParams()
+  console.log('>>', searchie.get('origin'))
+  console.log({ searchie })
+  console.log({ login })
+  const navigate = useNavigate()
 
   return (
     <>
@@ -66,10 +66,10 @@ export const Login = () => {
           type="button"
           className="bg-slate-900 text-white rounded p-4"
           onClick={async () => {
-            await login(email, password);
-            const origin = searchie.get("origin");
+            await login(email, password)
+            const origin = searchie.get('origin')
             if (origin) {
-              navigate(origin);
+              navigate(origin)
             }
           }}
         >
@@ -77,5 +77,5 @@ export const Login = () => {
         </button>
       </form>
     </>
-  );
-};
+  )
+}

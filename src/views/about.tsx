@@ -1,3 +1,3 @@
 export const About = () => {
-  return <div>view for about</div>;
-};
+  return <div>view for about</div>
+}

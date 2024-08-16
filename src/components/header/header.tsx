@@ -1,19 +1,19 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { type FC, PropsWithChildren } from "react";
-import classnames from "classnames";
-import styles from "./header.module.scss";
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { type FC, PropsWithChildren } from 'react'
+import classnames from 'classnames'
+import styles from './header.module.scss'
 
 interface HeaderProps {
-  username: string | undefined;
-  logout: () => void;
+  username: string | undefined
+  logout: () => void
 }
 
 const LoggedInBlock = ({
   username,
   logout,
 }: {
-  username: string;
-  logout: () => void;
+  username: string
+  logout: () => void
 }) => {
   return (
     <div className="flex gap-2">
@@ -27,27 +27,27 @@ const LoggedInBlock = ({
         logout
       </button>
     </div>
-  );
-};
+  )
+}
 
 const LoginBlock = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
   console.log({
     pathnameoriginal: pathname,
     pathname: encodeURIComponent(pathname),
     decoded: decodeURIComponent(encodeURIComponent(pathname)),
-  });
+  })
 
-  if (pathname === "/login") {
-    return null;
+  if (pathname === '/login') {
+    return null
   }
   return (
     <Link to={`/login?origin=${encodeURIComponent(pathname)}`}>log in</Link>
-  );
-};
+  )
+}
 
 interface HeaderProps {
-  logout: () => void;
+  logout: () => void
 }
 
 const MenuLink: FC<PropsWithChildren<{ link: string }>> = ({
@@ -65,8 +65,8 @@ const MenuLink: FC<PropsWithChildren<{ link: string }>> = ({
     >
       {children}
     </NavLink>
-  );
-};
+  )
+}
 
 export const Header: FC<HeaderProps> = ({ username, logout }) => {
   return (
@@ -88,5 +88,5 @@ export const Header: FC<HeaderProps> = ({ username, logout }) => {
         <LoginBlock />
       )}
     </header>
-  );
-};
+  )
+}
